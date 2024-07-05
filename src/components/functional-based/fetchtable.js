@@ -1,33 +1,47 @@
+import { Table } from "react-bootstrap";
 
-function DataTable(){
+function DataTable(prop){
+  const{data}=prop;
+  console.log(data)
     return(
         <>
-        <table className="table" >
+        <Table className="table" >
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
+      <th>id</th>
+      <th>recipeName</th>
+      <th>image</th>
+      <th>ingredients</th>
+      <th>instructions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-    </tr>
-    <tr>
-      <td>Mary</td>
-      <td>Moe</td>
-      <td>mary@example.com</td>
-    </tr>
-    <tr>
-      <td>July</td>
-      <td>Dooley</td>
-      <td>july@example.com</td>
-    </tr>
+  {
+    data.map((eachRecipe)=>{
+      const {id,name,image,ingredients,instructions}=eachRecipe
+      return(
+        <>
+        {/* <>{eachRecipe}</> */}
+        <tr>
+          <td>{id}</td> 
+          <td>{name}</td>  
+          <td><img src={image} width={200} height={200} alt="name"></img></td>     
+          <td>{ingredients.map((eachIngredients,index)=>{
+            return(<p>{`${index+1}${eachIngredients}`}</p>)
+          })}</td>     
+          <td>{instructions.map((eachInstructions,index)=>
+          {
+            return(<p>{`${index+1}${eachInstructions}`}</p>)
+          })}</td>              
+          </tr>
+          </>
+      )
+    })
+  }
+  
+   
   </tbody>
-</table>
+</Table>
 
         </>
     )
