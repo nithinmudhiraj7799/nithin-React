@@ -1,29 +1,31 @@
 function Table(){
     return(
-        <table >
 
+<table className="table table-hover">
+  <thead>
     <tr>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
     </tr>
-  
+  </thead>
+  <tbody>
     <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>john@example.com</td>
     </tr>
     <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
+      <td>Mary</td>
+      <td>Moe</td>
+      <td>mary@example.com</td>
     </tr>
- 
+    <tr>
+      <td>July</td>
+      <td>Dooley</td>
+      <td>july@example.com</td>
+    </tr>
+  </tbody>
 </table>
 
     )
