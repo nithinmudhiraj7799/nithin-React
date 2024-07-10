@@ -1,18 +1,14 @@
 
-import React from "react";
-import ButtonComponent from "../button/button";
+import React, { useContext } from "react";
+import { ProfileWrapper } from "./stack";
+// import ButtonComponent from "../button/button";
 function Home(){
+   const sharedData= useContext(ProfileWrapper);
+   console.log(sharedData,"sheredData")
     return(
         <>
-        <h1>this is a Home component</h1>
-       {
-        [1,2,3,4].map((each)=>{
-            return(
-                <ButtonComponent/>
-            )
-        }
-        )
-       }
+        <h1>welcome to Home component {sharedData.profileInfo.name} {sharedData.profileInfo.salary}</h1>
+      <h4>{sharedData.counter}</h4>
         </>
       
     )

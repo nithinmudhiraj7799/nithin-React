@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Home from './home'
 import About from './about'
@@ -8,15 +8,45 @@ import Contact from './contact '
 import "./stack.css"
 import Auto from './default'
 
-
+export  const ProfileWrapper=createContext( );
 const Stack = () => {
+  const[profileInfo,setProfileInfo]=useState({
+    name:"nithin",
+    salary:"20000"
+  });
+  const[counter,setCounter]=useState(100)
+
+  const ChangeName=(name)=>{
+      setProfileInfo({...profileInfo,name:name});
+  }
+  const setCount=()=>{
+
+    setCounter(counter+100);
+  }
+  const decrementHandler=()=>{
+   if(counter>0){ 
+    setCounter(counter-100)
+          }
+  }
+  const resetCounter=()=>{
+    setCounter(0)
+  }
   return (
     <div>
+      <ProfileWrapper.Provider value={{
+        profileInfo,
+        ChangeName ,
+        counter:counter,
+        setCount:setCount,
+        decrementHandler:decrementHandler,
+        resetCounter:resetCounter
+        }}>
+
         <BrowserRouter>
-        <Link to="/" >home</Link>
+        {/* <Link to="/" >home</Link>
         <Link to="/about" >home</Link>
         <Link to="/setting" >settings</Link>
-        <Link to="/contact" >contact</Link>
+        <Link to="/contact" >contact</Link> */}
         <nav className="navbar navbar-expand-sm bg-light">
   <div className="container-fluid">
     <ul className="navbar-nav">
@@ -24,26 +54,26 @@ const Stack = () => {
         {/* <a className="nav-link" href="#">
           Link 1
         </a> */}
-        <Link to="/">Home</Link>
+        <Link to="/" class="btn btn-warning" style={{margin:5 }} >Home</Link>
       </li>
       <li className="nav-item">
         {/* <a className="nav-link" href="#">
           Link 2
         </a> */}
-        <Link to="/about">About</Link>
+        <Link to="/about" class="btn btn-warning" style={{margin:5}}>About</Link>
       </li>
       <li className="nav-item">
         {/* <a className="nav-link" href="#">
           Link 3
         </a> */}
-         <Link to="/Setting">Setting</Link>
+         <Link to="/Setting" class="btn btn-warning" style={{margin:5}}>Setting</Link>
       </li>
       <li className="nav-item">
         {/* <a className="nav-link" href="#">
           Link 3
         </a> */}
         
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact" class="btn btn-warning" style={{margin:5}}>Contact</Link>
       </li>
 
     </ul>
@@ -59,6 +89,7 @@ const Stack = () => {
             <Route path="*" element={<Auto/>}/>
         </Routes>
         </BrowserRouter>
+        </ProfileWrapper.Provider>
     </div>
   )
 }
