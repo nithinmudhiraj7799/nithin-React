@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext,  useState } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Home from './home'
 import About from './about'
@@ -7,11 +7,24 @@ import Contact from './contact '
 
 import "./stack.css"
 import Auto from './default'
+// import ReducerFunction from '../useReducer/useReducer'
 
+
+
+const profileWrapper=createContext()
 
 const Stack = () => {
+  const[profile,setProfile]=useState({
+    name:"naveen",
+    salary:2000
+  })
   return (
     <div>
+      <profileWrapper.Provider value={
+        profile
+      }/>
+      
+      
         <BrowserRouter>
         <Link to="/" >home</Link>
         <Link to="/about" >home</Link>
