@@ -1,32 +1,25 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 
+export const ApiData=()=>{
 
-const[Countries,setCountries]=useState([])
+const [data,setData]=useState([])
 
+useEffect(()=>{
+DataFetch()
+},[])
+const DataFetch=async()=>{
+  const {data,status}=await axios.get("https://jsonplaceholder.typicode.com/users")
+  console.log(data)
+  if(status===200){
+    setData(data)
+  }
+}
 
-export const Country=()=>{
-    useEffect(()=>{
-        fetching()
-    },[])
-    async function fetching(){
-       const res=await axios.get("https://restcountries.com/v3.1/all")
-       console.log(res)
-       const result=setCountries(Countries)
-       console.log(result)
-        // getData(data)
-    }
-  
-  const getData=(Data)=>{
-    return(Data.map((e)=>e.name.official))
-  };
- 
-    
-    return(
-        <>
-      <h1>good afternoon</h1>
-
-        </>
-    )
+  return(
+    <>
+    <h1>hello</h1>
+    </>
+  )
 }

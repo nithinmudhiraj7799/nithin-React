@@ -1,9 +1,6 @@
 import axios from "axios"
+
 import { useEffect, useState } from "react"
-
-
-
-
 
 const UseAxios=(Url="https://fakestoreapi.com/products")=>{
 
@@ -11,7 +8,7 @@ const[data,setData]=useState([])
 const[error,setError]=useState(null)
 const[loading,setLoading]=useState(true)
     useEffect(()=>{
-   FetchData()
+      FetchData()
     },[]);
 
 const FetchData=async()=>{

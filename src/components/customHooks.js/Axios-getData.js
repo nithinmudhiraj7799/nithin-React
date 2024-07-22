@@ -2,10 +2,6 @@
 
 import UseAxios from "./Axios-cusotom"
 
-
-
-
-
 const AxiosDataFetching=()=>{
     const[data,error,loading]=UseAxios()
     const[categories,catagoriesError,categoriesLoading]=UseAxios("https://fakestoreapi.com/products/categories")
