@@ -8,8 +8,7 @@ const AxiosDataFetching=()=>{
     if(loading){
         return(
             <h1>loading... please wait ....</h1>
-        )
-    
+        )  
     }
     if(error){
         <h1>something went wrong please try again</h1>

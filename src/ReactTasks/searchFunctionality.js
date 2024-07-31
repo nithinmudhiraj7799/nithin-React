@@ -1,5 +1,6 @@
 
 
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
@@ -7,44 +8,48 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-const Fetch = () => {
+const InputSearch = () => {
   const [data, setData] = useState([]);
-  // const [loading,setLoading]=useState(true)
+  const [searchInput, setSearchInput] = useState("");
+  const [loading,setLoading]=useState(true)
 
-  useEffect(() => {
+  useEffect(() => { 
     DataHandler();
   }, []);
 
   const DataHandler = async () => {
     try {
-      const {data,status} = await axios.get("https://jsonplaceholder.typicode.com/users");
-      // const data1 = response.data;
-
-      console.log(data);
-      if(status===200){
-
-      
-      setData(data);
-      // loading(false)
+      const { data, status } = await axios.get("https://jsonplaceholder.typicode.com/users");
+      if (status === 200) {
+        setData(data);
+        setLoading(false)
       }
-
-
     } catch (error) {
       console.log(error);
-      // loading(false)
+      setLoading(false)
+
     }
   };
 
-  const ascendingOrder=()=> {
-    const ascendingSortedData = [...data].sort((a, b)=>a.username.localeCompare(b.username));
-        setData(ascendingSortedData);
+  const ascendingOrder = () => {
+    const ascendingSortedData = [...data].sort((a, b) => a.username.localeCompare(b.username));
+    setData(ascendingSortedData);
   };
 
   const descendingOrder = () => {
-    const descendingSortedData = [...data].sort((a,b)=>b.username.localeCompare(a.username));
-    
-        setData(descendingSortedData);
+    const descendingSortedData = [...data].sort((a, b) => b.username.localeCompare(a.username));
+    setData(descendingSortedData);
+  };
+
+ 
+
+
+  const SelectData = () => {
+    const filteredData = data.filter((item) => item.username.toLowerCase().includes(searchInput.toLowerCase()));
+    setData(filteredData);
   };
 
   return (
@@ -52,11 +57,19 @@ const Fetch = () => {
       <Row>
         <div className="mt-5">
           <h2 className="text-center mb-4">User Information</h2>
-          <div style={{display:"flex",justifyContent:"center",gap:50}}>
+          <div style={{display: "flex", justifyContent: "center", gap: 50}}>
+            <InputGroup className="mb-4">
+              <Form.Control
+                placeholder="Enter Username"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </InputGroup>
             <Button variant="primary" onClick={ascendingOrder} className="mr-2">Sort Ascending</Button> 
             <Button variant="secondary" onClick={descendingOrder}>Sort Descending</Button>
+            <Button variant="secondary" onClick={SelectData}>Filter Data</Button>
           </div>
-          
           <br/>
           <Table striped bordered hover>
             <thead>
@@ -69,8 +82,10 @@ const Fetch = () => {
                 <th>City</th>
               </tr>
             </thead>
-            <tbody>
-             
+            <tbody>  
+              
+             <>  
+            
               { 
               data.map((each) => {
                 const { id, name, email, username, address: { street, city } } = each;
@@ -84,7 +99,9 @@ const Fetch = () => {
                     <td>{city}</td>
                   </tr>
                 );
-              })}
+              })} 
+            
+              </>  
             </tbody>
           </Table>
         </div>
@@ -93,4 +110,4 @@ const Fetch = () => {
   );
 };
 
-export default Fetch;
+export default InputSearch;

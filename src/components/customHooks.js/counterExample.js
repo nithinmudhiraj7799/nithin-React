@@ -12,6 +12,7 @@ const CounterExample=()=>{
             <h1>{Age}</h1>
             <h1>{salary}</h1>
             <button onClick={incrementCount}>Increment</button>
+            <button onClick={decrementAge}>hello</button>
             <button onClick={incrementAge}>AgeIncrement</button>
 
             <button onClick={incrementSalary}>salary</button>
