@@ -1,5 +1,26 @@
+body {
+    border: 2px solid ;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffb300, #0072ff);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
 
-
-.main{
-    border:2px solid;
-}
+  .main{
+    border: 5px solid;
+    background: linear-gradient(to right, #a200ff, #0072ff);
+    height:400px;
+    width:550px;
+    display: grid;
+    padding: 50px;
+    align-items: center;
+    justify-content: center;
+  } 
+  button{
+    background-color: #02f98e;
+     
+  }

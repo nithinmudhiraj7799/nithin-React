@@ -1,5 +1,7 @@
 
+// import "./weatherapp.css"
 
+import "./weatherapp.css";
 import {  useState } from "react"
 
 
@@ -19,18 +21,10 @@ function Searching(){
     
     setSearch("")
     }
-    const main={
-      border:"2px solid",
-      width:"550px",
-      display:"grid",
-      justifyContent:"center",
-      alignItems:"center"
+    
 
-
-
-    }
     return(
-      <div style={main} >
+      <div className="  main " >
       <div className="content" >
       <h1>weather app</h1>
     <div>
@@ -40,7 +34,11 @@ function Searching(){
         <h2>india</h2>
         <p>{weather.name}</p>
         {weather.main&& <h3>{weather.main.temp}°C</h3>}  
+     
+  
+   
    </div>
+   
      </div>
     )
 }
