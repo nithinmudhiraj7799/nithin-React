@@ -1,0 +1,40 @@
+
+.main{
+    border: 2px solid ;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns:auto auto auto auto; */
+}
+.box{
+    border:2px solid purple;
+    height:580px;
+    width:300px;
+    box-shadow: 0 0 2px 1px red;
+    background-image: linear-gradient(blue,yellow);
+    /* display: grid;
+    grid-template-columns: auto,auto; */
+    align-items: center;
+    justify-content: space-between ;
+    gap: 50px;
+    margin: 100px;
+    padding-left: 20px;
+    padding: 60px;
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+  
+
+}
+.model_box{
+    position:relative !important;
+    /* top:10px !important;
+    left:30% !important; */
+    color:green !important; 
+    display:flex !important;
+    justify-content: center !important;
+    height:100vh !important;
+}

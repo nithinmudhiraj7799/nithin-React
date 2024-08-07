@@ -1,13 +1,15 @@
 
 
+import "./countryFinder.css"
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./mycountryApi.css";
-import CustomSpinner from "../components/Customspinner/CustomSpinner";
+import CustomSpinner from "../../components/Customspinner/CustomSpinner";
+// import "./mycountryApi.css";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-function CountriesApi() {
+const CountryFinder=()=>{
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -44,50 +46,40 @@ function CountriesApi() {
   const handleSearchInput = (event) => {
     const searchValue = event.target.value;
     setSearchInput(searchValue);
-    const filtered = countries.filter(country => country.toLowerCase().includes(searchValue.toLowerCase()));
+    const filtered = countries.filter(country=>country.toLowerCase().includes(searchValue.toLowerCase()));
     setFilteredCountries(filtered);
   };
 
   return (
-    <div className="Total-Body"> 
-      <h2>Country List</h2>
-      <InputGroup className="mb-4">
-        <Form.Control
+    <div className="TotalBody"> 
+    <div className="Heading"> <h2>Country List</h2></div>
+     
+      <InputGroup className="Main" >
+        <Form.Control 
           placeholder="Search for a country"
-          aria-label="Search for a country"
           value={searchInput}
           onChange={handleSearchInput}
         />
-      </InputGroup>
-      <select onChange={selectCountryHandler} value={selectedCountry}>
+      </InputGroup >
+      <select style={{width:"562px"}} onChange={selectCountryHandler} value={selectedCountry}>
         {filteredCountries.map((country, inedx) => (
-          <option value={country} key={inedx}>
+          <option key={inedx} value={country} style={{width:"562px"}}>
             {country}
           </option>
         ))}
       </select>
       <br />
-      {loading && <CustomSpinner />}
-      {Object.keys(selectedCountryData).length > 0 && !loading && (
-        <div className="country-card">
-          <h2 className="country-name">{selectedCountryData.name.common}</h2>
-          <img
-            src={selectedCountryData.flags.png}
+      {loading && <CustomSpinner/>}
+        {Object.keys(selectedCountryData).length > 0 && !loading && (
+        <div className="countryCard">
+          <h2 className="countryName">{selectedCountryData.name.common}</h2>
+          <img className="flagImage"  src={selectedCountryData.flags.png}  />
+
+            <h3 className="capital"> Capital: <span>{selectedCountryData.capital}</span>  </h3>
            
-            className="flag-image"
-          />
-            <h3 className="capital">
-            Capital: <span>{selectedCountryData.capital}</span>
-            </h3>
-            <h3 className="population">
-            Population: <span>{selectedCountryData.population}</span>
-            </h3>
-            <h3 className="region">
-            Region: <span>{selectedCountryData.region}</span>
-            </h3>
-            <h3 className="location">
-            Location:{" "}
-            <a href={selectedCountryData.maps.googleMaps}>Google Maps</a>
+            <h3 className="population"> Population: <span>{selectedCountryData.population}</span>   </h3>
+             <h3 className="region"> Region: <span>{selectedCountryData.region}</span>   </h3>
+            <h3 className="location"> Location:{" "}  <a href={selectedCountryData.maps.googleMaps}>Google Maps</a>
             </h3>
           {/* <img
             src={selectedCountryData.coatOfArms.png}
@@ -102,5 +94,5 @@ function CountriesApi() {
   );
 }
 
-export default CountriesApi;
+export default CountryFinder;
 

@@ -19,7 +19,6 @@ const InputSearch = () => {
   useEffect(() => { 
     DataHandler();
   }, []);
-
   const DataHandler = async () => {
     try {
       const { data, status } = await axios.get("https://jsonplaceholder.typicode.com/users");
@@ -30,23 +29,16 @@ const InputSearch = () => {
     } catch (error) {
       console.log(error);
       setLoading(false)
-
     }
   };
-
   const ascendingOrder = () => {
     const ascendingSortedData = [...data].sort((a, b) => a.username.localeCompare(b.username));
     setData(ascendingSortedData);
   };
-
   const descendingOrder = () => {
     const descendingSortedData = [...data].sort((a, b) => b.username.localeCompare(a.username));
     setData(descendingSortedData);
   };
-
- 
-
-
   const SelectData = () => {
     const filteredData = data.filter((item) => item.username.toLowerCase().includes(searchInput.toLowerCase()));
     setData(filteredData);
@@ -82,10 +74,8 @@ const InputSearch = () => {
                 <th>City</th>
               </tr>
             </thead>
-            <tbody>  
-              
-             <>  
-            
+            <tbody>               
+             <>             
               { 
               data.map((each) => {
                 const { id, name, email, username, address: { street, city } } = each;

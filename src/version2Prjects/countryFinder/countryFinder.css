@@ -1,0 +1,49 @@
+.TotalBody {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+ 
+  }
+
+  .Main {
+    margin-bottom: 20px;
+  }
+  
+  .countryCard {
+    padding:20px;
+    border:1px solid #dee2e6;
+    border-radius: 8px;
+    background-color:hsl(0, 0%, 100%);
+  }
+  
+  .countryName {
+    font-size:1.5rem;
+    margin-bottom:10px;
+  }
+  
+  .flagImage {
+    width:100%;
+    height:auto;
+    margin-bottom:20px;
+  }
+  
+  .countryCard h3 {
+    font-size:1.1rem;
+    margin-bottom:5px;
+  }
+  
+  .countryCard span {
+    font-weight:bold;
+  }
+  
+    .countryCard a {
+    color:#007bff;
+    text-decoration:none;
+  }
+  
+  .countryCard a:hover {
+    text-decoration: underline;
+  }
+  

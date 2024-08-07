@@ -1,0 +1,19 @@
+.main{
+    display: grid;
+    justify-content: center;
+    background-color: rgb(108, 4, 153);
+    height: 60px;
+    color: rgb(214, 253, 37);
+    text-shadow: 0px 0px 3px red;
+}
+.spinner{
+    display: grid;
+    justify-content: center;
+}
+.Card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* box-shadow: 0px 2px 0px 1px red; */
+    /* grid-template-columns: auto,auto,auto,auto,auto; */
+}
